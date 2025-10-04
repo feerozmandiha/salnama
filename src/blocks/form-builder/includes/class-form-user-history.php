@@ -377,6 +377,7 @@ class Salnama_Form_User_History {
         <?php
     }
     
+    
     /**
      * Get status label in Persian
      */

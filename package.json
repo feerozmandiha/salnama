@@ -24,4 +24,5 @@
         "@wordpress/element": "^5.0.0",
         "@wordpress/icons": "^10.32.0"
     }
+
 }

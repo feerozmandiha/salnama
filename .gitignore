@@ -18,6 +18,7 @@ yarn-debug.log*
 yarn-error.log*
 /dist
 /build
+package-lock.json
 
 # وردپرس
 wp-config.php

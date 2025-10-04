@@ -12,7 +12,6 @@
 const defaults = require('@wordpress/scripts/config/webpack.config');
 const path = require('path');
 const fs = require('fs');
-
 const blocksDir = path.resolve(process.cwd(), 'src', 'blocks');
 
 function getBlockEntries() {

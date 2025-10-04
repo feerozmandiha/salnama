@@ -2,6 +2,7 @@
 /**
  * کلاس اصلی برای مدیریت بارگذاری بلوک‌ها و تنظیمات افزونه Salnama.
  */
+
 class Salnama_Init {
 
     public function run() {

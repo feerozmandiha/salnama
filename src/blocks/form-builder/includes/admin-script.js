@@ -22,6 +22,7 @@ jQuery(document).ready(function($) {
         });
     });
     
+    
     // جستجو در درخواست‌ها
     $('.salnama-search').on('keyup', function() {
         var searchTerm = $(this).val().toLowerCase();

@@ -318,6 +318,7 @@ function salnama_submissions_page() {
         
         <hr class="wp-header-end">
         
+        
         <!-- فیلترهای پیشرفته -->
         <div class="salnama-filters-card">
             <div class="filter-header">

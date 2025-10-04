@@ -204,7 +204,6 @@ if ($enable_user_history && is_user_logged_in()) {
         <?php endif; ?>
     </div>
 </div>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('<?php echo esc_js($form_id); ?>');
