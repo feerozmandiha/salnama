@@ -1,0 +1,230 @@
+.salnama-form-builder {
+    line-height: 1.6;
+    
+    .salnama-form-container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+    
+    .form-title {
+        margin-bottom: 15px;
+        font-size: 1.5em;
+        font-weight: 700;
+        color: inherit;
+    }
+    
+    .form-description {
+        margin-bottom: 30px;
+        opacity: 0.8;
+        color: inherit;
+    }
+    
+    .form-fields {
+        margin-bottom: 30px;
+    }
+    
+    .form-field {
+        margin-bottom: 20px;
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: inherit;
+        }
+        
+        .required-star {
+            color: #d63638;
+            margin-right: 4px;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: var(--wp--preset--font-family--iransansxfanum);
+            transition: all 0.3s ease;
+            background-color: #fff;
+            
+            &:focus {
+                outline: none;
+                border-color: #007cba;
+                box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
+            }
+            
+            &.error {
+                border-color: #d63638;
+                box-shadow: 0 0 0 2px rgba(214, 54, 56, 0.2);
+            }
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .field-error {
+            color: #d63638;
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+        }
+    }
+    
+    .submit-button {
+        background-color: #007cba;
+        color: white;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: var(--wp--preset--font-family--iransansxfanum);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        
+        &:hover {
+            background-color: #005a87;
+            transform: translateY(-1px);
+        }
+        
+        &:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        &.loading {
+            position: relative;
+            color: transparent;
+            
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 20px;
+                height: 20px;
+                border: 2px solid transparent;
+                border-top: 2px solid white;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+        }
+    }
+    
+    .form-message {
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        text-align: center;
+        
+        &.success {
+            background-color: #edfaef;
+            border: 1px solid #68de81;
+            color: #0c622d;
+        }
+        
+        &.error {
+            background-color: #fcf0f1;
+            border: 1px solid #f86368;
+            color: #d63638;
+        }
+    }
+    
+    .user-history-section {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        
+        .history-title {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: inherit;
+        }
+        
+        .history-list {
+            .history-item {
+                padding: 15px;
+                background: white;
+                border-radius: 4px;
+                margin-bottom: 10px;
+                border-left: 4px solid #007cba;
+                
+                .history-date {
+                    font-size: 12px;
+                    color: #666;
+                    margin-bottom: 5px;
+                }
+                
+                .history-data {
+                    font-size: 14px;
+                }
+            }
+            
+            .no-history {
+                text-align: center;
+                color: #666;
+                padding: 20px;
+            }
+        }
+    }
+}
+
+// انیمیشن‌ها
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+// رسپانسیو
+@media (max-width: 768px) {
+    .salnama-form-builder {
+        .form-field {
+            input, textarea, select {
+                padding: 10px 12px;
+            }
+        }
+        
+        .submit-button {
+            padding: 12px 30px;
+        }
+    }
+}
+
+// استایل‌های تم‌های مختلف
+.salnama-form-style-modern {
+    .salnama-form-container {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+}
+
+.salnama-form-style-classic {
+    .salnama-form-container {
+        border: 2px solid #e0e0e0;
+        border-radius: 0;
+    }
+}
+
+.salnama-form-style-minimal {
+    .salnama-form-container {
+        background: transparent !important;
+        box-shadow: none;
+        border: none;
+    }
+    
+    .form-field {
+        input, textarea, select {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e0e0e0;
+        }
+    }
+}

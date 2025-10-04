@@ -1,0 +1,79 @@
+.salnama-form-builder {
+    margin: 20px 0;
+    
+    .form-preview {
+        border: 2px dashed #ccc;
+        font-family: 'Tahoma', 'Arial', sans-serif;
+        
+        h3 {
+            margin-bottom: 15px;
+            color: inherit;
+        }
+        
+        p {
+            margin-bottom: 25px;
+            color: inherit;
+            opacity: 0.8;
+        }
+    }
+    
+    .form-fields-preview {
+        margin-bottom: 25px;
+    }
+    
+    .form-field-preview {
+        margin-bottom: 20px;
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: inherit;
+        }
+        
+        input, textarea, select {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.8);
+            
+            &:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+            }
+        }
+    }
+    
+    .submit-button-preview {
+        transition: all 0.3s ease;
+        
+        &:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+    }
+    
+    .user-history-notice {
+        border-right: 3px solid #007cba;
+    }
+}
+
+// استایل‌های مختلف فرم
+.salnama-form-style-modern {
+    .form-preview {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.salnama-form-style-classic {
+    .form-preview {
+        border: 2px solid #e0e0e0;
+        border-radius: 0;
+    }
+}
+
+.salnama-form-style-minimal {
+    .form-preview {
+        border: none;
+        background: transparent !important;
+    }
+}

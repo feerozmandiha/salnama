@@ -1,0 +1,17 @@
+/**
+ * استایل‌های بلوک والد در ادیتور
+ */
+.wp-block-salnama-blocks-hero-slider {
+  min-height: 450px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #c3c4c7;
+
+  // به InnerBlocks اجازه موقعیت‌دهی می‌دهیم
+  .block-editor-inner-blocks {
+    position: relative;
+    min-height: 450px;
+    z-index: 1;
+  }
+}

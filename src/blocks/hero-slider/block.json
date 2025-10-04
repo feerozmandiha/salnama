@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "salnama-blocks/hero-slider",
+  "title": "اسلایدر قهرمان (Hero Slider)",
+  "description": "اسلایدر تمام‌صفحه حرفه‌ای با افکت‌های انیمیشن، مدیریت تصاویر و محتوای مجزا برای هر اسلاید.",
+  "category": "salnama-blocks",
+  "icon": "format-gallery",
+  "keywords": ["اسلایدر", "قهرمان", "تمام صفحه", "تصویر", "فروشگاهی"],
+  "textdomain": "salnama-blocks",
+  "attributes": {
+    "animationSpeed": { "type": "number", "default": 6000 },
+    "transitionEffect": { "type": "string", "default": "fade" },
+    "overlayColor": { "type": "string", "default": "#000000" },
+    "overlayOpacity": { "type": "number", "default": 0.65 }
+  },
+  "supports": {
+    "anchor": true,
+    "html": false,
+    "align": ["full"]
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "script": "file:./frontend.js",
+  "render": "file:./render.php"
+}

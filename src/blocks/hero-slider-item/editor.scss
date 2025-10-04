@@ -1,0 +1,68 @@
+.wp-block-salnama-blocks-hero-slide-item {
+  position: relative;
+  min-height: 300px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  overflow: hidden;
+
+  .salnama-slide-item-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: var(--overlay-color);
+      opacity: var(--overlay-opacity);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .salnama-hero-content {
+      position: relative;
+      z-index: 2;
+      opacity: 1 !important;
+      width: 100%;
+      padding: 15px;
+      text-align: center;
+
+      .salnama-title,
+      .salnama-subtitle {
+        color: #fff !important;
+      }
+    }
+  }
+
+  .salnama-select-image-button,
+  .salnama-change-image-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.9);
+  }
+
+  /* ریسپانسیو در ادیتور */
+  @media (max-width: 768px) {
+    .salnama-slide-item-wrapper {
+      min-height: 200px;
+    }
+    .salnama-hero-content .salnama-title {
+      font-size: 1.5rem;
+    }
+    .salnama-hero-content .salnama-subtitle {
+      font-size: 0.9rem;
+    }
+  }
+}

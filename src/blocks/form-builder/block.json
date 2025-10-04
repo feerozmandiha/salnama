@@ -1,0 +1,111 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "salnama-blocks/form-builder",
+  "title": "سازنده فرم مشاوره",
+  "description": "فرم ساز پیشرفته و هوشمند برای ثبت درخواست مشاوره با قابلیت ذخیره تاریخچه کاربر",
+  "category": "salnama-blocks",
+  "icon": "feedback",
+  "keywords": ["فرم", "مشاوره", "تماس", "ثبت درخواست", "کاربر"],
+  "textdomain": "salnama-blocks",
+  "attributes": {
+    "formTitle": {
+      "type": "string",
+      "default": "فرم درخواست مشاوره"
+    },
+    "formDescription": {
+      "type": "string",
+      "default": "لطفاً اطلاعات خود را وارد کنید تا کارشناسان ما با شما تماس بگیرند."
+    },
+    "submitButtonText": {
+      "type": "string",
+      "default": "ارسال درخواست"
+    },
+    "successMessage": {
+      "type": "string",
+      "default": "درخواست شما با موفقیت ثبت شد. همکاران ما به زودی با شما تماس خواهند گرفت."
+    },
+    "fields": {
+      "type": "array",
+      "default": [
+        {
+          "id": "full_name",
+          "type": "text",
+          "label": "نام کامل",
+          "required": true,
+          "placeholder": "نام و نام خانوادگی خود را وارد کنید",
+          "options": []
+        },
+        {
+          "id": "email",
+          "type": "email",
+          "label": "ایمیل",
+          "required": true,
+          "placeholder": "example@domain.com",
+          "options": []
+        },
+        {
+          "id": "phone",
+          "type": "tel",
+          "label": "شماره تماس",
+          "required": true,
+          "placeholder": "09123456789",
+          "options": []
+        },
+        {
+          "id": "service_type",
+          "type": "select",
+          "label": "نوع خدمات مورد نیاز",
+          "required": true,
+          "placeholder": "لطفاً انتخاب کنید",
+          "options": [
+            "مشاوره رایگان",
+            "طراحی سایت",
+            "سئو و بهینه‌سازی",
+            "دیجیتال مارکتینگ",
+            "طراحی لوگو و برندینگ",
+            "پشتیبانی سایت",
+            "سایر خدمات"
+          ]
+        },
+        {
+          "id": "message",
+          "type": "textarea",
+          "label": "توضیحات بیشتر",
+          "required": false,
+          "placeholder": "در مورد پروژه خود بیشتر توضیح دهید...",
+          "options": []
+        }
+      ]
+    },
+    "enableUserHistory": {
+      "type": "boolean",
+      "default": true
+    },
+    "formStyle": {
+      "type": "string",
+      "default": "modern"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#333333"
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

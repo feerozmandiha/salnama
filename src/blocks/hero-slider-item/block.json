@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "salnama-blocks/hero-slide-item",
+  "title": "آیتم اسلاید",
+  "parent": ["salnama-blocks/hero-slider"],
+  "description": "یک اسلاید در بلوک اسلایدر قهرمان.",
+  "category": "salnama-blocks",
+  "icon": "format-image",
+  "attributes": {
+    "mediaId":   { "type": "number", "default": 0 },
+    "mediaUrl":  { "type": "string", "default": "" },
+    "mediaAlt":  { "type": "string", "default": "" }
+  },
+  "supports": {
+    "html": false,
+    "inserter": false,
+    "reusable": false
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

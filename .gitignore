@@ -1,0 +1,27 @@
+# سیستم‌عامل
+.DS_Store
+Thumbs.db
+
+# لاگ‌ها
+*.log
+debug.log
+
+# محیط توسعه
+.env
+.vscode/
+.idea/
+
+# Node / Build
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/dist
+/build
+
+# وردپرس
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backups/
