@@ -1,0 +1,87 @@
+// Frontend styles for accordion item - Minimal essential styles
+.salnama-accordion-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  
+  .salnama-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    text-align: right;
+    
+    .salnama-accordion-title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .salnama-accordion-icon {
+      transition: transform 0.3s ease;
+    }
+  }
+  
+  &.is-open {
+    .salnama-accordion-icon {
+      transform: rotate(180deg);
+    }
+  }
+  
+  .salnama-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #fff;
+    
+    > * {
+      padding: 20px;
+      margin: 0;
+    }
+  }
+  
+  &.is-open .salnama-accordion-content {
+    max-height: 5000px;
+    border-top: 1px solid #e0e0e0;
+  }
+}
+
+// Horizontal layout styles only
+.salnama-accordion-horizontal {
+  .salnama-accordion-item {
+    flex: 1;
+    min-width: 200px;
+    
+    .salnama-accordion-header {
+      height: 100%;
+      min-height: 120px;
+      flex-direction: column;
+      justify-content: center;
+      
+      .salnama-accordion-title {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        margin: 10px 0;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .salnama-accordion-item {
+      min-width: 150px;
+    }
+  }
+}
+
+// Support for hidden attribute
+.salnama-accordion-content[hidden] {
+  display: none;
+}
+
+.salnama-accordion-item.is-open .salnama-accordion-content {
+  display: block;
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "salnama-blocks/advanced-accordion",
+  "title": "آکاردیون پیشرفته",
+  "description": "بلوک آکاردیون پیشرفته با قابلیت inner blocks",
+  "category": "salnama-blocks",
+  "icon": "editor-justify",
+  "attributes": {
+    "accordionStyle": {
+      "type": "string",
+      "default": "vertical"
+    },
+    "multipleOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "animationDuration": {
+      "type": "number",
+      "default": 300
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "color": {
+      "background": true,
+      "text": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "script": "file:./view.js",
+  "render": "file:./render.php"
+}

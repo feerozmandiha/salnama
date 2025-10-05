@@ -1,0 +1,34 @@
+// Editor styles for advanced accordion - Minimal styles
+.salnama-accordion-editor {
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px 0;
+  
+  .salnama-accordion-notice {
+    background: #f0f0f1;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+    
+    p {
+      margin: 0;
+      color: #666;
+      font-size: 14px;
+    }
+  }
+  
+  // Layout styles only
+  &.salnama-accordion-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  &.salnama-accordion-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

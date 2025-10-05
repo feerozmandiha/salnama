@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "salnama-blocks/accordion-item",
+  "title": "آیتم آکاردیون",
+  "parent": ["salnama-blocks/advanced-accordion"],
+  "description": "یک آیتم در بلوک آکاردیون پیشرفته.",
+  "category": "salnama-blocks",
+  "icon": "minus",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "عنوان آیتم"
+    },
+    "isOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "itemId": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "inserter": false,
+    "reusable": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "color": {
+      "background": true,
+      "text": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

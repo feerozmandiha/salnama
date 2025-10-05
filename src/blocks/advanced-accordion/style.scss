@@ -1,0 +1,21 @@
+// Frontend styles for advanced accordion - Minimal styles
+.salnama-accordion {
+  width: 100%;
+  
+  // Layout styles only
+  &.salnama-accordion-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  &.salnama-accordion-horizontal {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}

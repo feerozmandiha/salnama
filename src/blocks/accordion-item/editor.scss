@@ -1,0 +1,42 @@
+// Editor styles for accordion item - Minimal styles
+.salnama-accordion-item-editor {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  
+  &.is-open {
+    border-color: #007cba;
+  }
+  
+  .salnama-accordion-header-editor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    text-align: right;
+    
+    .salnama-accordion-title-editor {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    
+    .salnama-accordion-icon-editor {
+      transition: transform 0.3s ease;
+    }
+  }
+  
+  &.is-open .salnama-accordion-icon-editor {
+    transform: rotate(180deg);
+  }
+  
+  .salnama-accordion-content-editor {
+    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #e0e0e0;
+  }
+}
