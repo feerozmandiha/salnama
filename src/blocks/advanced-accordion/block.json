@@ -18,6 +18,22 @@
     "animationDuration": {
       "type": "number",
       "default": 300
+    },
+    "salnamaAnimation": {
+      "type": "string",
+      "default": ""
+    },
+    "salnamaAnimationDelay": {
+      "type": "string",
+      "default": ""
+    },
+    "salnamaAnimationDuration": {
+      "type": "string",
+      "default": ""
+    },
+    "isNested": {
+      "type": "boolean",
+      "default": false
     }
   },
   "supports": {
@@ -30,6 +46,10 @@
     "color": {
       "background": true,
       "text": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true
     }
   },
   "editorScript": "file:./index.js",

@@ -21,10 +21,16 @@ if (!empty($block->parsed_block['innerBlocks'])) {
 if (empty($inner_content) && !empty($content)) {
     $inner_content = trim($content);
 }
+
+// اضافه کردن کلاس‌های وردپرس برای استایل‌دهی
+$header_classes = 'salnama-accordion-header';
+if (isset($attributes['className'])) {
+    $header_classes .= ' ' . $attributes['className'];
+}
 ?>
 
 <div <?php echo $wrapper_attributes; ?>>
-    <button class="salnama-accordion-header" aria-expanded="<?php echo $is_open ? 'true' : 'false'; ?>" aria-controls="<?php echo $item_id; ?>-content">
+    <button class="<?php echo esc_attr($header_classes); ?>" aria-expanded="<?php echo $is_open ? 'true' : 'false'; ?>" aria-controls="<?php echo $item_id; ?>-content">
         <span class="salnama-accordion-title"><?php echo esc_html($attributes['title']); ?></span>
         <span class="salnama-accordion-icon">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">

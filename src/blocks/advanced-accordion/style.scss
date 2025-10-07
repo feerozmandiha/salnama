@@ -1,21 +1,207 @@
-// Frontend styles for advanced accordion - Minimal styles
+// Frontend styles for advanced accordion - Complete inheritance from theme
 .salnama-accordion {
   width: 100%;
+  
+  // ارث‌بری کامل از قالب
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  background-color: inherit;
   
   // Layout styles only
   &.salnama-accordion-vertical {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: inherit;
   }
+}
+
+// Horizontal accordion - Only layout, everything else inherits
+.salnama-accordion-horizontal {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  width: fit-content;
+  height: 80vh;
+  gap: inherit;
   
-  &.salnama-accordion-horizontal {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+  // ارث‌بری کامل از قالب
+  font-family: inherit;
+  color: inherit;
+  background-color: inherit;
+  
+  .salnama-accordion-item {
+    position: relative;
+    display: block;
+    float: left;
+    width: 2em;
+    margin: 0.5em 0 0.5em 0.5em;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    flex-shrink: 0;
     
-    @media (max-width: 768px) {
-      flex-direction: column;
+    // ارث‌بری کامل از قالب
+    font-family: inherit;
+    color: inherit;
+    background-color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    
+    .salnama-accordion-header {
+      position: absolute;
+      height: 3.5em;
+      top: 12em;
+      left: 0;
+      transform-origin: 0 0;
+      transform: rotate(-90deg);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      cursor: pointer;
+      
+      // ارث‌بری کامل از استایل دکمه قالب
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      color: inherit;
+      background-color: inherit;
+      border: inherit;
+      text-align: inherit;
+      
+      .salnama-accordion-title {
+        text-indent: 1em;
+        line-height: 2em;
+        width: 100%;
+        white-space: nowrap;
+        
+        // ارث‌بری کامل از قالب
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+      }
+      
+      .salnama-accordion-icon {
+        display: none;
+        color: inherit;
+      }
+    }
+    
+    .salnama-accordion-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      max-height: none !important;
+      opacity: 0;
+      visibility: hidden;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: all 0.5s ease;
+      
+      // ارث‌بری کامل از قالب
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+      background-color: inherit;
+      
+      > * {
+        opacity: 0;
+        transition: opacity 0.3s ease 0.2s;
+        
+        // ارث‌بری برای تمام محتوای داخلی
+        font-family: inherit;
+        color: inherit;
+      }
+    }
+    
+    // حالت باز شده
+    &.is-open {
+      width: 29em;
+      
+      .salnama-accordion-header {
+        position: static;
+        transform: rotate(0deg);
+        
+        .salnama-accordion-title {
+          white-space: normal;
+        }
+      }
+      
+      .salnama-accordion-content {
+        opacity: 1;
+        visibility: visible;
+        transform: scaleX(1);
+        position: static;
+        height: auto;
+        
+        > * {
+          opacity: 1;
+        }
+      }
     }
   }
+  
+  // ریسپانسیو برای موبایل
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    
+    .salnama-accordion-item {
+      width: 100% !important;
+      height: auto;
+      margin: 0.25em 0;
+      
+      .salnama-accordion-header {
+        position: static;
+        transform: none !important;
+        width: 100%;
+        height: auto;
+        
+        .salnama-accordion-title {
+          text-indent: 0;
+          white-space: normal;
+        }
+        
+        .salnama-accordion-icon {
+          display: block;
+        }
+      }
+      
+      .salnama-accordion-content {
+        position: static;
+        transform: none;
+        max-height: 0;
+      }
+      
+      &.is-open {
+        height: auto;
+        
+        .salnama-accordion-content {
+          max-height: 5000px;
+        }
+      }
+    }
+  }
+}
+
+// انیمیشن‌های مشترک
+.salnama-accordion-item,
+.salnama-accordion-item .salnama-accordion-header,
+.salnama-accordion-item .salnama-accordion-content {
+  transition: all 0.5s ease;
+}
+
+// Support for hidden attribute
+.salnama-accordion-content[hidden] {
+  display: none;
+}
+
+.salnama-accordion-item.is-open .salnama-accordion-content {
+  display: block;
 }

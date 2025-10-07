@@ -2,103 +2,160 @@ import './style.scss';
 
 console.log('=== SALNAMA ACCORDION VIEW.JS LOADED ===');
 
-// جلوگیری از اجرای تکراری
-let accordionsInitialized = false;
-
-function initSalnamaAccordions() {
-    if (accordionsInitialized) {
-        console.log('Accordions already initialized, skipping...');
-        return;
+class SalnamaAccordionManager {
+    constructor() {
+        this.initialized = false;
+        this.init();
     }
-    
-    console.log('DOM Content Loaded - Initializing accordions');
-    accordionsInitialized = true;
-    
-    const accordions = document.querySelectorAll('.salnama-accordion');
-    console.log('Found accordions:', accordions.length);
-    
-    accordions.forEach((accordion, accordionIndex) => {
-        console.log(`Setting up accordion ${accordionIndex + 1}`);
+
+    init() {
+        if (this.initialized) return;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            this.initializeAllAccordions();
+        });
+
+        // برای محتوای dynamic
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) { // Element node
+                        if (node.classList && node.classList.contains('salnama-accordion')) {
+                            this.initializeAccordion(node);
+                        } else if (node.querySelector) {
+                            const accordions = node.querySelectorAll('.salnama-accordion');
+                            accordions.forEach(accordion => {
+                                this.initializeAccordion(accordion);
+                            });
+                        }
+                    }
+                });
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        this.initialized = true;
+    }
+
+    initializeAllAccordions() {
+        const accordions = document.querySelectorAll('.salnama-accordion');
+        console.log('Found accordions:', accordions.length);
+        
+        accordions.forEach((accordion, index) => {
+            this.initializeAccordion(accordion, index);
+        });
+    }
+
+    initializeAccordion(accordion, index = 0) {
+        if (accordion.classList.contains('accordion-initialized')) {
+            return; // قبلاً مقداردهی شده
+        }
+
+        console.log(`Initializing accordion ${index + 1}`, accordion);
         
         const isMultiple = accordion.dataset.multiple === 'true';
+        const isNested = accordion.classList.contains('salnama-nested-accordion');
         const items = accordion.querySelectorAll('.salnama-accordion-item');
-        console.log(`Found ${items.length} items in accordion ${accordionIndex + 1}`);
         
+        console.log(`Found ${items.length} items in accordion ${index + 1}`, { isMultiple, isNested });
+
         items.forEach((item, itemIndex) => {
-            const header = item.querySelector('.salnama-accordion-header');
-            const content = item.querySelector('.salnama-accordion-content');
+            this.initializeAccordionItem(item, itemIndex, isMultiple, items);
+        });
+
+        accordion.classList.add('accordion-initialized');
+    }
+
+    initializeAccordionItem(item, itemIndex, isMultiple, allItems) {
+        const header = item.querySelector('.salnama-accordion-header');
+        const content = item.querySelector('.salnama-accordion-content');
+        
+        if (!header) {
+            console.log('No header found in item', itemIndex);
+            return;
+        }
+
+        // حذف event listenerهای قبلی
+        const newHeader = header.cloneNode(true);
+        header.parentNode.replaceChild(newHeader, header);
+
+        newHeader.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             
-            if (!header) {
-                console.log('No header found in item', itemIndex);
-                return;
-            }
-            
-            // حذف تمام event listenerهای قبلی با clone کردن المنت
-            const newHeader = header.cloneNode(true);
-            header.parentNode.replaceChild(newHeader, header);
-            
-            newHeader.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('🎯 ACCORDION CLICKED!');
-                
-                const currentItem = this.closest('.salnama-accordion-item');
-                if (!currentItem) return;
-                
-                const isOpen = currentItem.classList.contains('is-open');
-                console.log('Current state - isOpen:', isOpen);
-                
-                // اگر multipleOpen فعال نیست، سایر آیتم‌ها را ببند
-                if (!isMultiple && !isOpen) {
-                    items.forEach(otherItem => {
-                        if (otherItem !== currentItem && otherItem.classList.contains('is-open')) {
-                            closeAccordionItem(otherItem);
-                        }
-                    });
-                }
-                
-                if (isOpen) {
-                    closeAccordionItem(currentItem);
-                } else {
-                    openAccordionItem(currentItem);
+            this.handleAccordionClick(item, isMultiple, allItems);
+        });
+
+        console.log(`Event listener added to item ${itemIndex}`);
+    }
+
+    handleAccordionClick(clickedItem, isMultiple, allItems) {
+        const isOpen = clickedItem.classList.contains('is-open');
+        console.log('Accordion clicked, isOpen:', isOpen);
+
+        if (!isMultiple && !isOpen) {
+            // بستن سایر آیتم‌ها
+            allItems.forEach(item => {
+                if (item !== clickedItem && item.classList.contains('is-open')) {
+                    this.closeAccordionItem(item);
                 }
             });
-            
-            console.log(`Event listener added to item ${itemIndex}`);
-        });
+        }
+
+        if (isOpen) {
+            this.closeAccordionItem(clickedItem);
+        } else {
+            this.openAccordionItem(clickedItem);
+        }
+    }
+
+    openAccordionItem(item) {
+        const header = item.querySelector('.salnama-accordion-header');
+        const content = item.querySelector('.salnama-accordion-content');
+        const accordion = item.closest('.salnama-accordion');
+        const isHorizontal = accordion.classList.contains('salnama-accordion-horizontal');
         
-        function openAccordionItem(item) {
-            const header = item.querySelector('.salnama-accordion-header');
-            const content = item.querySelector('.salnama-accordion-content');
+        item.classList.add('is-open');
+        if (header) header.setAttribute('aria-expanded', 'true');
+        if (content) {
+            content.hidden = false;
             
-            item.classList.add('is-open');
-            if (header) header.setAttribute('aria-expanded', 'true');
-            if (content) {
-                content.hidden = false;
+            if (isHorizontal) {
+                content.style.maxHeight = 'none';
+                content.style.opacity = '1';
+                content.style.visibility = 'visible';
+            } else {
                 content.style.maxHeight = content.scrollHeight + 'px';
             }
-            console.log('✅ Item opened');
         }
+        console.log('✅ Item opened');
+    }
+
+    closeAccordionItem(item) {
+        const header = item.querySelector('.salnama-accordion-header');
+        const content = item.querySelector('.salnama-accordion-content');
+        const accordion = item.closest('.salnama-accordion');
+        const isHorizontal = accordion.classList.contains('salnama-accordion-horizontal');
         
-        function closeAccordionItem(item) {
-            const header = item.querySelector('.salnama-accordion-header');
-            const content = item.querySelector('.salnama-accordion-content');
+        item.classList.remove('is-open');
+        if (header) header.setAttribute('aria-expanded', 'false');
+        if (content) {
+            content.hidden = true;
             
-            item.classList.remove('is-open');
-            if (header) header.setAttribute('aria-expanded', 'false');
-            if (content) {
-                content.hidden = true;
+            if (isHorizontal) {
+                content.style.opacity = '0';
+                content.style.visibility = 'hidden';
+            } else {
                 content.style.maxHeight = '0';
             }
-            console.log('✅ Item closed');
         }
-    });
+        console.log('✅ Item closed');
+    }
 }
 
-// فقط یک بار اجرا شود
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSalnamaAccordions);
-} else {
-    // اگر DOM از قبل بارگذاری شده، مستقیماً اجرا شود
-    setTimeout(initSalnamaAccordions, 100);
-}
+// راه‌اندازی manager
+new SalnamaAccordionManager();

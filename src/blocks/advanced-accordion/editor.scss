@@ -1,9 +1,10 @@
-// Editor styles for advanced accordion - Minimal styles
+// Editor styles for advanced accordion - Minimal styles with inherited fonts
 .salnama-accordion-editor {
   border: 1px dashed #ccc;
   border-radius: 8px;
   padding: 20px;
   margin: 10px 0;
+  font-family: inherit !important; // استفاده از فونت قالب
   
   .salnama-accordion-notice {
     background: #f0f0f1;
@@ -11,11 +12,13 @@
     border-radius: 4px;
     margin-bottom: 15px;
     text-align: center;
+    font-family: inherit !important; // استفاده از فونت قالب
     
     p {
       margin: 0;
       color: #666;
       font-size: 14px;
+      font-family: inherit !important; // استفاده از فونت قالب
     }
   }
   
