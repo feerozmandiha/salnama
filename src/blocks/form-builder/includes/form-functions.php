@@ -338,10 +338,13 @@ function salnama_submissions_page() {
                             <label for="service_filter">نوع خدمات:</label>
                             <select name="service_filter" id="service_filter" class="salnama-select2">
                                 <option value="">همه خدمات</option>
-                                <option value="طراحی سایت" <?php selected( $filters['service_filter'] ?? '', 'طراحی سایت' ); ?>>طراحی سایت</option>
-                                <option value="سئو" <?php selected( $filters['service_filter'] ?? '', 'سئو' ); ?>>سئو</option>
-                                <option value="دیجیتال مارکتینگ" <?php selected( $filters['service_filter'] ?? '', 'دیجیتال مارکتینگ' ); ?>>دیجیتال مارکتینگ</option>
-                                <option value="مشاوره" <?php selected( $filters['service_filter'] ?? '', 'مشاوره' ); ?>>مشاوره</option>
+                                <option value="خرید سررسید اختصاصی" <?php selected( $filters['service_filter'] ?? '', 'خرید سررسید اختصاصی' ); ?>>خرید سررسید اختصاصی</option>
+                                <option value="خرید تقویم رومیزی اختصاصی" <?php selected( $filters['service_filter'] ?? '', 'خرید تقویم رومیزی اختصاصی' ); ?>>خرید تقویم رومیزی اختصاصی</option>
+                                <option value="خرید تقویم دیواری اختصاصی" <?php selected( $filters['service_filter'] ?? '', 'خرید تقویم دیواری اختصاصی' ); ?>>خرید تقویم دیواری اختصاصی</option>
+                                <option value="مشاوره محصول اختصاصی" <?php selected( $filters['service_filter'] ?? '', 'مشاوره محصول اختصاصی' ); ?>>مشاوره محصول اختصاصی</option>
+                                <option value="سفارش عمومی" <?php selected( $filters['service_filter'] ?? '', 'سفارش عمومی' ); ?>>سفارش عمومی</option>
+                                <option value="پشتیبانی" <?php selected( $filters['service_filter'] ?? '', 'پشتیبانی' ); ?>>پشتیبانی</option>
+                                <option value="سایر خدمات" <?php selected( $filters['service_filter'] ?? '', 'سایر خدمات' ); ?>>سایر خدمات</option>
                                 <!-- سایر خدمات -->
                             </select>
                         </div>
@@ -812,22 +815,43 @@ function salnama_submissions_page() {
         }
 
         /* استایل برای وضعیت‌های مختلف خدمات */
-        .service-badge[data-service="طراحی سایت"] {
+        .service-badge[data-service="خرید سررسید اختصاصی"] {
             background: #e8f5e8;
             color: #388e3c;
             border-color: #388e3c;
         }
 
-        .service-badge[data-service="سئو"] {
+        .service-badge[data-service="خرید تقویم رومیزی اختصاصی"] {
             background: #fff3e0;
             color: #f57c00;
             border-color: #f57c00;
         }
 
-        .service-badge[data-service="دیجیتال مارکتینگ"] {
+        .service-badge[data-service="خرید تقویم دیواری اختصاصی"] {
             background: #f3e5f5;
             color: #7b1fa2;
             border-color: #7b1fa2;
+        }
+
+        .service-badge[data-service="مشاوره محصول"] {
+            background: #f3e5f5;
+            color: #a21f1fff;
+            border-color: #a21f1fff;
+        }
+        .service-badge[data-service="سفارش عمومی"] {
+            background: #f3e5f5;
+            color: #a2721fff;
+            border-color: #a2721fff;
+        }
+        .service-badge[data-service="پشتیبانی"] {
+            background: #f3e5f5;
+            color: #1f6ba2ff;
+            border-color: #1f6ba2ff;
+        }
+        .service-badge[data-service="سایر خدمات"] {
+            background: #f3e5f5;
+            color: #a21f7dff;
+            border-color: #a21f7dff;
         }
     </style>
 
